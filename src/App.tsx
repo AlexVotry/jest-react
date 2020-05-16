@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-const App = () => {
+const App = (): JSX.Element => {
   return (
     <div>
       <h1>Jest Test with React</h1>
