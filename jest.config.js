@@ -14,5 +14,5 @@ module.exports = {
     "^.+\\.(ts|tsx)$": "ts-jest"
   },
   snapshotSerializers: ["enzyme-to-json/serializer"],
-  setupFilesAfterEnv: ["<rootDir>/src/setupEnzyme.ts"],
+  setupFilesAfterEnv: ["<rootDir>/src/tests/setupEnzyme.ts"],
 };
