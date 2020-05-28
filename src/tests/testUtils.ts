@@ -1,4 +1,5 @@
-import { ShallowWrapper } from "enzyme";
+import { ShallowWrapper, shallow } from "enzyme";
+import React, { Component } from "react";
 
 
 export const findByTestAttr = (wrapper: ShallowWrapper, val: string) => {

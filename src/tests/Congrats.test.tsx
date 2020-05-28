@@ -5,9 +5,9 @@ import Congrats from '../components/Congrats';
 import { findByTestAttr } from './testUtils';
 import { AppProps } from '../types';
 
+const defaultProps = { success: false };
 
 const setup = (props?: AppProps) => {
-  const defaultProps = { success: false };
   const setupProps = { ...defaultProps, ...props };
   return shallow(<Congrats {...setupProps } />);
 };

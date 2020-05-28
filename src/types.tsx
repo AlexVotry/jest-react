@@ -9,6 +9,13 @@ export interface ArrayAny {
 }
 
 export interface AppProps {
-  success: boolean;
+  success?: boolean;
+  guessedWords?: guessedWordsType[];
 }
+
+export interface guessedWordsType {
+  guessedWord: string;
+  letterMatchCount: number;
+}
+
 
