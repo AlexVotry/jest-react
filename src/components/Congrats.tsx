@@ -7,14 +7,16 @@ export default function Congrats({ success }: AppProps): JSX.Element {
     if (!success) return null;
 
     return (
-      <span data-test="congrats-message">
-        Congratulations! You guessed the word!
-      </span>
+      <div className="col m6 offset-m3">
+        <div data-test="congrats-message" style={{ textAlign: 'center'}} className="card-panel #81c784 green lighten-2">
+          Congratulations! You guessed the word!
+        </div>
+      </div>
     )
   };
 
   return (
-    <div data-test="component-congrats">
+    <div data-test="component-congrats" className="row">
       { renderMessage() }
     </div>
   );

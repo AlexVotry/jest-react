@@ -7,9 +7,10 @@ export default function GuessedWords ({ guessedWords }: AppProps ) {
   const renderGuessedWords = () => {
     return guessedWords?.map(word => {
       return (
-        <div key={word.guessedWord} data-test="guessed-word" style={{ display: 'flex'}}>
-          <div className="eachWord">{word.guessedWord} </div>
-          <div className="eachNumber">{word.letterMatchCount }</div>
+        <div key={word.guessedWord} data-test="guessed-word" className="collection #81c784 green lighten-2">
+          <div className="collection-item">{word.guessedWord} 
+          <span className="badge">{word.letterMatchCount }</span>
+          </div>
         </div>
       )
     }
@@ -19,9 +20,9 @@ export default function GuessedWords ({ guessedWords }: AppProps ) {
   const renderContents = () => {
     if ( guessedWords && guessedWords?.length > 0) {
       return (
-        <div data-test="guessed-words" >
-          <div className="Header" style={{ display: 'flex' }}>
-            <h3>Guess</h3><h3>Matching Letters</h3>
+        <div data-test="guessed-words">
+          <div className="card-content white-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className="card-title">Guess</div><div className="card-title">Matching Letters</div>
           </div>
           {renderGuessedWords()}
         </div>
@@ -36,8 +37,12 @@ export default function GuessedWords ({ guessedWords }: AppProps ) {
   };
 
   return (
-    <div data-test="component-guessed-words">
+    <div className="row">
+      <div className="col m6 offset-m3">
+    <div data-test="component-guessed-words" className="card blue-grey darken-1">
       {renderContents()}
+    </div>
+    </div>
     </div>
   );
 
