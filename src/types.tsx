@@ -18,4 +18,8 @@ export interface guessedWordsType {
   letterMatchCount: number;
 }
 
+export interface inputProp {
+  secretWord: string;
+}
+
 

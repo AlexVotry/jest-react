@@ -6,7 +6,7 @@ import Congrats from './Congrats';
 
 const App = (): JSX.Element => {
   return (
-    <div className="App">
+    <div className="App" data-test="component-app">
       <h1 style={{textAlign: 'center'}}>Guess the Word</h1>
       <Congrats success={true} />
       <GuessedWords guessedWords={[
