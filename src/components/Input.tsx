@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import { inputProp } from '../types';
 
 export default function Input ({ secretWord }: inputProp) {
   const [currentGuess, setCurrentGuess] = React.useState('');
 
-  const handleSubmit = (e: any): void => {
+  const handleSubmit = (e: MouseEvent): void => {
     e.preventDefault();
-    const newValue = e.target.value;
+    setCurrentGuess('');
   }
 
   const handleChange = (e: any): void => {
-    console.log(e.target.value);
     setCurrentGuess(e.target.value);
   }
 
