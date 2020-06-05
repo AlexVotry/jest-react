@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
     "strict": true,
+    "strictNullChecks": false,
     "declaration": true,
     "outDir": "dist",
     "sourceMap": true

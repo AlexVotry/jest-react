@@ -15,4 +15,7 @@ module.exports = {
   },
   snapshotSerializers: ["enzyme-to-json/serializer"],
   setupFilesAfterEnv: ["<rootDir>/src/tests/setupEnzyme.ts"],
+  testEnvironment: 'jsdom',
+  verbose: true,
+  testURL: 'http://localhost/',
 };

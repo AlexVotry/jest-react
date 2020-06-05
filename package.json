@@ -13,6 +13,7 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
@@ -29,6 +30,7 @@
     "enzyme-to-json": "^3.5.0",
     "jest": "^26.0.1",
     "jest-enzyme": "^7.1.2",
+    "jest-react-hooks-shallow": "^1.4.1",
     "moxios": "^0.4.0",
     "react-hot-loader": "^4.12.21",
     "react-test-renderer": "^16.13.1",
@@ -39,6 +41,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.10.2",
     "axios": "^0.19.2",
     "react": "^16.9.0",
     "react-dom": "^16.13.1"

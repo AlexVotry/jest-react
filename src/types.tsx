@@ -22,4 +22,12 @@ export interface inputProp {
   secretWord: string;
 }
 
+export interface StateType {
+  secretWord: string | undefined;
+}
+
+export interface ActionType {
+  type: any;
+  payload?: string;
+}
 

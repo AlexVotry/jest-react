@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { StateType } from '../types';
 
-export const getSecretWord = async () => {
+export const getSecretWord = async (setSecretWord: Function) => {
   const response = await axios.get('http://localhost:3030');
-  return response.data;
+  setSecretWord(response.data);
 };
 
 // default export for mocking convenience

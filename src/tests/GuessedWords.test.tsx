@@ -3,9 +3,9 @@ import { shallow } from 'enzyme';
 
 import GuessedWords from '../components/GuessedWords';
 import { findByTestAttr } from '../tests/testUtils';
-import { AppProps } from '../types';
+import { AppProps, ObjStringType } from '../types';
 
-const defaultProps = { guessedWords: [] };
+const defaultProps: ObjStringType = { guessedWords: [] };
 
 const setup = (props?: AppProps) => {
   const setupProps = {...defaultProps, ...props };
