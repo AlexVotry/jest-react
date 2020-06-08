@@ -22,10 +22,10 @@ export const languageStrings: ObjStringType = {
 }
 
 export function getStringByLanguage (languageCode: string, stringKey: string, strings=languageStrings) {
-
-  if (languageCode === 'es') {
-    return strings.es[stringKey];
+  if (!strings[languageCode] || !strings[languageCode][stringKey]) {
+    console.warn(`Could not get string: [${stringKey}] for [${languageCode}]`)
+    return strings.en[stringKey];
   }
 
-  return strings.en[stringKey];
+  return strings[languageCode][stringKey];
 };
