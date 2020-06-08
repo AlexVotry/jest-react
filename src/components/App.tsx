@@ -5,7 +5,7 @@ import GuessedWords from './GuessedWords';
 import Congrats from './Congrats';
 import Input from './Input';
 import { StateType, ActionType } from '../types';
-import hookActions from '../actions/hookActions';
+import hookActions from '../helpers/hookActions';
 
 const initialState: StateType = { secretWord: null };
 
