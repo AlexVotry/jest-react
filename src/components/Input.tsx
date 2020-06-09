@@ -1,8 +1,12 @@
 import React, { MouseEvent } from 'react';
-import { inputProp } from '../types';
+import { InputProp } from '../types';
 
-export default function Input ({ secretWord }: inputProp) {
-  const [currentGuess, setCurrentGuess] = React.useState('');
+import languageContext from '../contexts/languageContext';
+import { getStringByLanguage } from '../helpers/strings';
+
+export default function Input ({ secretWord }: InputProp) {
+  const [currentGuess, setCurrentGuess] = React.useState(''); 
+  const language = React.useContext(languageContext);
 
   const handleSubmit = (e: MouseEvent): void => {
     e.preventDefault();
@@ -22,12 +26,12 @@ export default function Input ({ secretWord }: inputProp) {
           type="text" 
           value={currentGuess}
           onChange={handleChange}
-          placeholder="enter guess" />
+          placeholder={getStringByLanguage(language, 'guessInputPlaceHolder')} />
         <button 
           data-test="submit-button"
           onClick={handleSubmit}
           className="" >
-          Submit
+          { getStringByLanguage(language, 'submit')}
         </button>
       </form>
     </div>

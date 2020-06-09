@@ -12,7 +12,7 @@ export interface ArrayAny {
   [item: string]: any;
 }
 
-export interface AppProps {
+export interface CongratsProps {
   success?: boolean;
   language?: string;
   guessedWords?: guessedWordsType[];
@@ -23,8 +23,9 @@ export interface guessedWordsType {
   letterMatchCount: number;
 }
 
-export interface inputProp {
-  secretWord: string;
+export interface InputProp {
+  secretWord?: string;
+  language?: string;
 }
 
 export interface StateType {

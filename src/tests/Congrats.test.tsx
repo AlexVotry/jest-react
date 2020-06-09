@@ -3,16 +3,16 @@ import { shallow, mount } from 'enzyme';
 
 import Congrats from '../components/Congrats';
 import { findByTestAttr } from './testUtils';
-import { AppProps } from '../types';
+import { CongratsProps } from '../types';
 import languageContext from '../contexts/languageContext';
 
 const defaultProps = { success: false };
 
-// const setup = (props?: AppProps) => {
+// const setup = (props?: CongratsProps) => {
 //   const setupProps = { ...defaultProps, ...props };
 //   return shallow(<Congrats {...setupProps } />);
 // };
-const setup = ({ success, language }: AppProps) => {
+const setup = ({ success, language }: CongratsProps) => {
   language = language || 'en';
   success = success || false;
 

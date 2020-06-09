@@ -1,10 +1,10 @@
 import React from 'react';
-import { AppProps } from '../types';
+import { CongratsProps } from '../types';
 
 import languageContext from '../contexts/languageContext';
 import { getStringByLanguage } from '../helpers/strings';
 
-export default function Congrats({ success }: AppProps): JSX.Element {
+export default function Congrats({ success }: CongratsProps): JSX.Element {
   const language = React.useContext(languageContext);
 
   const renderMessage = () => {
