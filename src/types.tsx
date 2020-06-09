@@ -14,6 +14,7 @@ export interface ArrayAny {
 
 export interface AppProps {
   success?: boolean;
+  language?: string;
   guessedWords?: guessedWordsType[];
 }
 
@@ -28,6 +29,7 @@ export interface inputProp {
 
 export interface StateType {
   secretWord: string | undefined;
+  language: string;
 }
 
 export interface ActionType {

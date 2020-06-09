@@ -2,7 +2,7 @@
 
 export const languageStrings: ObjStringType = {
   en: {
-    congrats: 'Congatulations! You guessed the word!',
+    congrats: 'Congratulations! You guessed the word!',
     submit: 'Submit',
     guessPrompt: 'Try to guess the secret word!',
     guessInputPlaceHolder: 'enter guess',
@@ -11,7 +11,7 @@ export const languageStrings: ObjStringType = {
     matchingLettersColumnHeader: 'Matching Letters',
   },
   es: {
-    congrats: 'Engatulaciones! Adivinaste la palabra',
+    congrats: '¡Felicidades! ¡Adivinaste la palabra!',
     submit: 'Enviar',
     guessPrompt: '¡Intenta adivinar la palabra secreta!',
     guessInputPlaceHolder: 'entrar adivina',

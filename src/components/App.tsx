@@ -3,17 +3,21 @@ import { hot } from 'react-hot-loader';
 
 import GuessedWords from './GuessedWords';
 import Congrats from './Congrats';
+import LanguagePicker from './LanguagePicker';
 import Input from './Input';
 import { StateType, ActionType } from '../types';
 import hookActions from '../helpers/hookActions';
-import LanguagePicker from './LanguagePicker';
+import languageContext from '../contexts/languageContext';
 
-const initialState: StateType = { secretWord: null };
+
+const initialState: StateType = { secretWord: null, language: 'en' };
 
 function reducer(state: StateType, action: ActionType) {
   switch(action.type) {
     case 'setSecretWord':
       return { ...state, secretWord: action.payload };
+    case "setLanguage":
+      return { ...state, language: action.payload };
     default:
       throw new Error(`invalid action type ${action.type}`);
   }
@@ -22,7 +26,8 @@ function reducer(state: StateType, action: ActionType) {
 const App = (): JSX.Element => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  const setSecretWord = (secretWord: string) => dispatch({ type: 'setSecretWord', payload: secretWord })
+  const setSecretWord = (secretWord: string) => dispatch({ type: 'setSecretWord', payload: secretWord });
+  const setLanguage = (language: string) => dispatch({ type: 'setLanguage', payload: language });
 
   useEffect(() => {
     hookActions.getSecretWord(setSecretWord);
@@ -46,16 +51,12 @@ const App = (): JSX.Element => {
 
   return (
     <div className="container" data-test="component-app">
-      <h1 style={{textAlign: 'center'}}>Guess the Word</h1>
-      <div>{state.secretWord}</div>
-      <Input secretWord={state.secretWord} />
-      <LanguagePicker />
-      {/* <Congrats success={true} />
-      <GuessedWords guessedWords={[
-        { guessedWord: 'train', letterMatchCount: 3 },
-        { guessedWord: 'plane', letterMatchCount: 2 },
-        { guessedWord: 'party', letterMatchCount: 5 },
-      ]}/> */}
+      <languageContext.Provider value={state.language}>
+        <h1 style={{textAlign: 'center'}}>Guess the Word</h1>
+        <div>{state.secretWord}</div>
+        <LanguagePicker setLanguage={setLanguage}/>
+        <Input secretWord={state.secretWord} />
+      </languageContext.Provider>
     </div>
   )
 };
