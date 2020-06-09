@@ -6,6 +6,7 @@ import Congrats from './Congrats';
 import Input from './Input';
 import { StateType, ActionType } from '../types';
 import hookActions from '../helpers/hookActions';
+import LanguagePicker from './LanguagePicker';
 
 const initialState: StateType = { secretWord: null };
 
@@ -48,6 +49,7 @@ const App = (): JSX.Element => {
       <h1 style={{textAlign: 'center'}}>Guess the Word</h1>
       <div>{state.secretWord}</div>
       <Input secretWord={state.secretWord} />
+      <LanguagePicker />
       {/* <Congrats success={true} />
       <GuessedWords guessedWords={[
         { guessedWord: 'train', letterMatchCount: 3 },

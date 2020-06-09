@@ -4,6 +4,10 @@ export interface ObjStringType {
   [column: string]: any;
 }
 
+export interface FunctionProp {
+  [column: string]: Function;
+}
+
 export interface ArrayAny {
   [item: string]: any;
 }
