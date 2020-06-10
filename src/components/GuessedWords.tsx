@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { AppProps } from '../types';
+import { GuessedWordType } from '../types';
+import LanguageContext from '../contexts/LanguageContext';
+import GuessedWordsContext from '../contexts/GuessedWordsContext';
+import { getStringByLanguage } from '../helpers/strings';
 
-export default function GuessedWords ({ guessedWords }: AppProps ) {
+export default function GuessedWords () {
+  const [guessedWords] = GuessedWordsContext.useGuessedWords();
+  const language = React.useContext(LanguageContext);
 
   const renderGuessedWords = () => {
-    return guessedWords?.map(word => {
+    return guessedWords?.map((word:GuessedWordType) => {
       return (
         <div key={word.guessedWord} data-test="guessed-word" className="collection #81c784 green lighten-2">
           <div className="collection-item">{word.guessedWord} 
@@ -22,7 +27,7 @@ export default function GuessedWords ({ guessedWords }: AppProps ) {
       return (
         <div data-test="guessed-words">
           <div className="card-content white-text" style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div className="card-title">Guess</div><div className="card-title">Matching Letters</div>
+            <div className="card-title">{getStringByLanguage(language, 'guessedWords')}</div><div className="card-title">{getStringByLanguage(language, 'matchingLettersColumnHeader')}</div>
           </div>
           {renderGuessedWords()}
         </div>
@@ -30,7 +35,7 @@ export default function GuessedWords ({ guessedWords }: AppProps ) {
     } else {
       return (
         <div data-test="guess-instructions">
-          Try to guess the secret word!
+          {getStringByLanguage(language, 'guessPrompt')}
         </div>
       );
     }

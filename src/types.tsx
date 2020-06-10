@@ -12,13 +12,16 @@ export interface ArrayAny {
   [item: string]: any;
 }
 
-export interface CongratsProps {
-  success?: boolean;
-  language?: string;
-  guessedWords?: guessedWordsType[];
+export interface ArrayString {
+  [item: string]: string;
 }
 
-export interface guessedWordsType {
+export interface CongratsType {
+  success?: boolean;
+  language?: string;
+}
+
+export interface GuessedWordType {
   guessedWord: string;
   letterMatchCount: number;
 }

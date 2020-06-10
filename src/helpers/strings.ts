@@ -9,6 +9,7 @@ export const languageStrings: ObjStringType = {
     guessColumnHeader: 'Guessed Words',
     guessedWords: 'Guesses',
     matchingLettersColumnHeader: 'Matching Letters',
+    title: 'Guess the Word'
   },
   es: {
     congrats: '¡Felicidades! ¡Adivinaste la palabra!',
@@ -18,6 +19,7 @@ export const languageStrings: ObjStringType = {
     guessColumnHeader: 'Palabras adivinadas',
     guessedWords: 'Suposiciones',
     matchingLettersColumnHeader: 'Letras a juego',
+    title: 'Adivina la palabra'
   },
 }
 

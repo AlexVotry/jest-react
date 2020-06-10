@@ -1,11 +1,12 @@
 import React from 'react';
-import { CongratsProps } from '../types';
 
-import languageContext from '../contexts/languageContext';
+import LanguageContext from '../contexts/LanguageContext';
+import SuccessContext from '../contexts/SuccessContext';
 import { getStringByLanguage } from '../helpers/strings';
 
-export default function Congrats({ success }: CongratsProps): JSX.Element {
-  const language = React.useContext(languageContext);
+export default function Congrats(): JSX.Element {
+  const [success] = SuccessContext.useSuccess();
+  const language = React.useContext(LanguageContext);
 
   const renderMessage = () => {
     if (!success) return null;

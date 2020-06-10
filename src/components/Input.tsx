@@ -1,12 +1,12 @@
 import React, { MouseEvent } from 'react';
 import { InputProp } from '../types';
 
-import languageContext from '../contexts/languageContext';
+import LanguageContext from '../contexts/LanguageContext';
 import { getStringByLanguage } from '../helpers/strings';
 
 export default function Input ({ secretWord }: InputProp) {
   const [currentGuess, setCurrentGuess] = React.useState(''); 
-  const language = React.useContext(languageContext);
+  const language = React.useContext(LanguageContext);
 
   const handleSubmit = (e: MouseEvent): void => {
     e.preventDefault();

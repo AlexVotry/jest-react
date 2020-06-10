@@ -5,10 +5,13 @@ import GuessedWords from './GuessedWords';
 import Congrats from './Congrats';
 import LanguagePicker from './LanguagePicker';
 import Input from './Input';
+
 import { StateType, ActionType } from '../types';
 import hookActions from '../helpers/hookActions';
-import languageContext from '../contexts/languageContext';
-
+import { getStringByLanguage } from '../helpers/strings';
+import LanguageContext from '../contexts/LanguageContext';
+import SuccessContext from '../contexts/SuccessContext';
+import GuessedWordsContext from '../contexts/GuessedWordsContext';
 
 const initialState: StateType = { secretWord: null, language: 'en' };
 
@@ -51,12 +54,18 @@ const App = (): JSX.Element => {
 
   return (
     <div className="container" data-test="component-app">
-      <languageContext.Provider value={state.language}>
-        <h1 style={{textAlign: 'center'}}>Guess the Word</h1>
+      <LanguageContext.Provider value={state.language}>
+        <h1 style={{ textAlign: 'center' }}>{getStringByLanguage(state.language, 'title')}</h1>
         <div>{state.secretWord}</div>
         <LanguagePicker setLanguage={setLanguage}/>
-        <Input secretWord={state.secretWord} />
-      </languageContext.Provider>
+        <GuessedWordsContext.GuessedWordsProvider>
+          <SuccessContext.SuccessProvider>
+            <Congrats />
+            <Input secretWord={state.secretWord} />
+          </SuccessContext.SuccessProvider>
+            <GuessedWords />
+        </GuessedWordsContext.GuessedWordsProvider>
+      </LanguageContext.Provider>
     </div>
   )
 };

@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import Input from '../components/Input';
 import { findByTestAttr } from './testUtils';
 import { InputProp } from '../types';
-import languageContext from '../contexts/languageContext';
+import LanguageContext from '../contexts/LanguageContext';
 
 const defaultProps = { secretWord: "party" };
 
@@ -18,9 +18,9 @@ const setup = ({ secretWord, language }: InputProp) => {
   language = language || 'en';
 
   return mount(
-    <languageContext.Provider value={language}>
+    <LanguageContext.Provider value={language}>
       <Input secretWord={secretWord} />
-    </languageContext.Provider>
+    </LanguageContext.Provider>
   )
 }
 

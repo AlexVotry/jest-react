@@ -1,25 +1,23 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Congrats from '../components/Congrats';
 import { findByTestAttr } from './testUtils';
-import { CongratsProps } from '../types';
-import languageContext from '../contexts/languageContext';
+import { CongratsType } from '../types';
+import LanguageContext from '../contexts/LanguageContext';
+import SuccessContext from '../contexts/SuccessContext';
 
-const defaultProps = { success: false };
-
-// const setup = (props?: CongratsProps) => {
-//   const setupProps = { ...defaultProps, ...props };
-//   return shallow(<Congrats {...setupProps } />);
-// };
-const setup = ({ success, language }: CongratsProps) => {
+const setup = ({ success, language }: CongratsType) => {
   language = language || 'en';
   success = success || false;
 
   return mount(
-    <languageContext.Provider value={language}>
-      <Congrats success={success} />
-    </languageContext.Provider>
+    <LanguageContext.Provider value={language}>
+    {/* override value of success instead of the context value */}
+      <SuccessContext.SuccessProvider value={[success, jest.fn()]}>
+        <Congrats />
+      </SuccessContext.SuccessProvider>
+    </LanguageContext.Provider>
   );
 };
 
@@ -42,7 +40,7 @@ test('renders without error', () => {
   expect(component.length).toBe(1);
 });
 
-test('renders no text when "success" prop is false', () => {
+test('renders no text when "success" is false', () => {
   const wrapper = setup({});
   const component = findByTestAttr(wrapper, 'component-congrats');
   expect(component.text()).toBe('');
