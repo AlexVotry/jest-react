@@ -6,6 +6,8 @@ import { findByTestAttr } from './testUtils';
 import { InputProp } from '../types';
 import LanguageContext from '../contexts/LanguageContext';
 import SuccessContext from '../contexts/SuccessContext';
+import GuessedWordsContext from '../contexts/GuessedWordsContext';
+
 
 const setup = ({ secretWord, language, success }: InputProp) => {
   secretWord = secretWord || 'party';
@@ -13,11 +15,13 @@ const setup = ({ secretWord, language, success }: InputProp) => {
   success = success || false;
 
   return mount(
-    <LanguageContext.Provider value={language}>
-      <SuccessContext.SuccessProvider value={[success, jest.fn()]}>
-        <Input secretWord={secretWord} />
-      </SuccessContext.SuccessProvider>
-    </LanguageContext.Provider>
+    <GuessedWordsContext.GuessedWordsProvider>
+      <LanguageContext.Provider value={language}>
+        <SuccessContext.SuccessProvider value={[success, jest.fn()]}>
+          <Input secretWord={secretWord} />
+        </SuccessContext.SuccessProvider>
+      </LanguageContext.Provider>
+    </GuessedWordsContext.GuessedWordsProvider>
   )
 }
 

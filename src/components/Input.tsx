@@ -1,19 +1,28 @@
 import React, { MouseEvent } from 'react';
 import { InputProp } from '../types';
 
-import LanguageContext from '../contexts/LanguageContext';
 import { getStringByLanguage } from '../helpers/strings';
+import { getLetterMatchCount } from '../helpers/helpers';
+import LanguageContext from '../contexts/LanguageContext';
 import SuccessContext from '../contexts/SuccessContext';
+import GuessedWordsContext from '../contexts/GuessedWordsContext';
 
 export default function Input ({ secretWord }: InputProp) {
   const [success, setSuccess] = SuccessContext.useSuccess();
+  const [guessedWords, setGuessedWords] = GuessedWordsContext.useGuessedWords();
   const language = React.useContext(LanguageContext);
   const [currentGuess, setCurrentGuess] = React.useState(''); 
 
   
   const handleSubmit = (e: MouseEvent): void => {
     e.preventDefault();
+    const letterMatchCount = getLetterMatchCount(currentGuess, secretWord);
+    const newGuessedWords = [...guessedWords, { guessedWord: currentGuess, letterMatchCount}];
+    
+    setGuessedWords(newGuessedWords);
+    
     if (currentGuess === secretWord) setSuccess(true);
+    
     setCurrentGuess('');
   }
 
