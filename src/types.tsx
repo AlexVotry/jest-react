@@ -29,6 +29,7 @@ export interface GuessedWordType {
 export interface InputProp {
   secretWord?: string;
   language?: string;
+  success?: boolean;
 }
 
 export interface StateType {

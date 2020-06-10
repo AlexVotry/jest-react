@@ -5,27 +5,23 @@ import Input from '../components/Input';
 import { findByTestAttr } from './testUtils';
 import { InputProp } from '../types';
 import LanguageContext from '../contexts/LanguageContext';
+import SuccessContext from '../contexts/SuccessContext';
 
-const defaultProps = { secretWord: "party" };
-
-// const setup = (props?: inputProp) => {
-//   const setupProps = { ...defaultProps, ...props };
-//   return shallow(<Input { ...setupProps }/>);
-// };
-
-const setup = ({ secretWord, language }: InputProp) => {
+const setup = ({ secretWord, language, success }: InputProp) => {
   secretWord = secretWord || 'party';
   language = language || 'en';
+  success = success || false;
 
   return mount(
     <LanguageContext.Provider value={language}>
-      <Input secretWord={secretWord} />
+      <SuccessContext.SuccessProvider value={[success, jest.fn()]}>
+        <Input secretWord={secretWord} />
+      </SuccessContext.SuccessProvider>
     </LanguageContext.Provider>
   )
 }
 
 describe('Input language tests', () => {
-
   test('Input button says is in English by default', () => {
     const wrapper = setup({});
     const submitButton = findByTestAttr(wrapper, 'submit-button');
@@ -36,6 +32,11 @@ describe('Input language tests', () => {
     const submitButton = findByTestAttr(wrapper, 'submit-button');
     expect(submitButton.text()).toBe('Enviar');
   })
+});
+
+test('input component does not show when success is true', () => {
+  const wrapper = setup({ success: true });
+  expect(wrapper.isEmptyRender()).toBe(true);
 })
 
 test('renders without error', () => {
