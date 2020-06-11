@@ -1,4 +1,11 @@
-  import { ObjStringType } from '../types';
+import { ObjStringType } from '../types';
+import en from '../assets/americanFlag.jpg';
+import es from '../assets/mexicanFlag.jpg';
+
+export const languages = [
+  { code: 'en', symbol: en },
+  { code: 'es', symbol: es }
+];
 
 export const languageStrings: ObjStringType = {
   en: {

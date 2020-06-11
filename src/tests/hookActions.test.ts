@@ -10,7 +10,7 @@ describe('moxios tests', () => {
     moxios.uninstall();
   });
 
-  test('gets the secretWord respon from axios response', async () => {
+  test('gets the secretWord response from axios response', async () => {
     const secretWord = 'party';
 
     moxios.wait(() => {
@@ -26,5 +26,5 @@ describe('moxios tests', () => {
 
     expect(mockSetSecretWord).toHaveBeenCalledWith(secretWord);
   });
-
+  
 })

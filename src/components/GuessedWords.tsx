@@ -34,7 +34,7 @@ export default function GuessedWords () {
       );
     } else {
       return (
-        <div data-test="guess-instructions">
+        <div data-test="guess-instructions" className="card-content white-text" >
           {getStringByLanguage(language, 'guessPrompt')}
         </div>
       );

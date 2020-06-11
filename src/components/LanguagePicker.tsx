@@ -1,16 +1,9 @@
 import React from 'react';
 import { FunctionProp } from '../types';
 
-import en from '../assets/americanFlag.jpg';
-import es from '../assets/mexicanFlag.jpg';
+import { languages } from '../helpers/strings';
 
 export default function LanguagePicker ({setLanguage}: FunctionProp) {
-
-  const languages = [
-    { code: 'en', symbol: en },
-    { code: 'es', symbol: es }
-  ];
-
   const languageIcons = () => {
     return languages.map(lang => {
       return (
