@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
 
-import AppClass from './App.test';
+import AppClass from './App';
 
 Enzyme.configure({ adapter: new EnzymeAdapter })
 /**
@@ -90,5 +90,5 @@ test('counter displays error if counter goes below zero', () => {
   wrapper.setState({ counter });
   mockClick('#subtract', mockTarget);
   const display = findByTestAttr(wrapper, 'error');
-  expect(display.length).toBe(0);
+  expect(display.length).toBe(1);
 })

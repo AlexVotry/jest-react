@@ -6,7 +6,7 @@ import App from './App';
 
 Enzyme.configure({ adapter: new EnzymeAdapter });
 
-const setup = (props = {}, state = null) => {
+const setup = (props = {}) => {
   return shallow(<App {...props} />);
 }
 
@@ -14,6 +14,8 @@ const findByTestAttr = (wrapper, val) => {
   return wrapper.find(`[data-test="${val}"]`);
 }
 const wrapper = setup();
+
+describe('Everything renders', () => {
 
   test('renders without error', () => {
     const appComponent = findByTestAttr(wrapper, 'component-app');
@@ -31,7 +33,10 @@ const wrapper = setup();
   test('renders counter display', () => {
     const counterDisplay = findByTestAttr(wrapper, 'counter-display');
     expect(counterDisplay.length).toBe(1);
+  });
 });
+
+describe('button works', () => {
 
   test('button will not be less than zero', () => {
     const mockTarget = { target: { id: 'subBtn'}};
@@ -49,3 +54,4 @@ const wrapper = setup();
     expect(display.text()).toContain(1);
   });
 
+});
