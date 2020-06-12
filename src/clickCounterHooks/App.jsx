@@ -1,8 +1,8 @@
-import React, {useState, useCallback} from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
 
 const App = () => {
-  const [tally, setTally] = useState(0);
+  const [tally, setTally] = React.useState(0);
 
   const updateTally = (e) => {
     let counter = e.target.id === 'addBtn' ? tally + 1 : tally - 1;
