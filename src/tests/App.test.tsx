@@ -1,21 +1,22 @@
 import React from 'react';
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 
 import { findByTestAttr } from '../tests/testUtils';
 import App from '../components/App';
 import hookActions from '../actions/hookActions';
-import Input from '../components/Input';
 
 const mockGetSecretWord = jest.fn();
 
+/**
+ * we mock the 'getSecretWord' function so we don't have to test that function here,
+ * @param secretWord - word that will be mocked in the useReducer payload
+ * @return ReactWrapper with mockReducer and mockGetSecretWord
+ */
 const setup = (secretWord: string = 'party') => {
   mockGetSecretWord.mockClear();
   hookActions.getSecretWord = mockGetSecretWord;
   const mockUseReducer = jest.fn()
-    .mockReturnValue([
-      { secretWord },
-      jest.fn()
-    ]);
+    .mockReturnValue([ { secretWord }, jest.fn() ]);
 
     React.useReducer = mockUseReducer;
   // use mount because useEffect not called on 'shallow'.
@@ -32,7 +33,6 @@ test('renders without error', () => {
 describe('getSecretWord calls', () => {
   test('getSecretWord gets called on App mount (useEffect)', () => {
     setup();
-
     // check to see if function in useEffect was called.
     expect(mockGetSecretWord).toHaveBeenCalled();
   });
@@ -45,7 +45,6 @@ describe('getSecretWord calls', () => {
 
     expect(mockGetSecretWord).not.toHaveBeenCalled();
   });
-
 });
 
 describe('secretWord is not null', () => {
@@ -53,7 +52,7 @@ describe('secretWord is not null', () => {
   beforeEach(() => {
     wrapper = setup();
   });
-  test('renders app when secrete word is not null', () => {
+  test('renders app when secretWord is not null', () => {
     const appComponent = findByTestAttr(wrapper, 'component-app');
 
     expect(appComponent.exists()).toBe(true);
@@ -69,12 +68,12 @@ describe('secretWord IS null', () => {
   beforeEach(() => {
     wrapper = setup(null);
   });
-  test('does NOT render app when secrete word is not null', () => {
+  test('does NOT render app when secretWord is null', () => {
     const appComponent = findByTestAttr(wrapper, 'component-app');
 
     expect(appComponent.exists()).toBe(false);
   });
-  test('renders spinner wehen secretWord is not null', () => {
+  test('renders spinner wehen secretWord is null', () => {
     const spinnerComponent = findByTestAttr(wrapper, 'spinner');
     expect(spinnerComponent.exists()).toBe(true);
   })
