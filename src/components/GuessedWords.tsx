@@ -18,8 +18,7 @@ export default function GuessedWords () {
           </div>
         </div>
       )
-    }
-    );
+    });
   };
 
   const renderContents = () => {
@@ -44,10 +43,10 @@ export default function GuessedWords () {
   return (
     <div className="row">
       <div className="col m6 offset-m3">
-    <div data-test="component-guessed-words" className="card blue-grey darken-1">
-      {renderContents()}
-    </div>
-    </div>
+        <div data-test="component-guessed-words" className="card blue-grey darken-1">
+          {renderContents()}
+        </div>
+      </div>
     </div>
   );
 
