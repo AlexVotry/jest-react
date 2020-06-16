@@ -26,7 +26,7 @@ const setup = ({ secretWord, language, success }: InputProp) => {
 }
 
 describe('Input language tests', () => {
-  test('Input button says is in English by default', () => {
+  test('Input button is in English by default', () => {
     const wrapper = setup({});
     const submitButton = findByTestAttr(wrapper, 'submit-button');
     expect(submitButton.text()).toBe('Submit');

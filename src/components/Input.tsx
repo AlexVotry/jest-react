@@ -24,11 +24,11 @@ export default function Input ({ secretWord }: InputProp) {
     if (currentGuess === secretWord) setSuccess(true);
     
     setCurrentGuess('');
-  }
+  };
 
   const handleChange = (e: any): void => {
     setCurrentGuess(e.target.value);
-  }
+  };
   
   if (success) return null;
   return (
